@@ -16,7 +16,7 @@ function initMap(){
   
     var request = {
         location: map.getCenter(),
-        radius: '15000',
+        radius: '8000',
         name: 'orphanage'
     };
     service = new google.maps.places.PlacesService(map);
