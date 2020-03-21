@@ -60,14 +60,14 @@ function callback(results, status) {
 }
 
 function createMarker(place) {
-    var hyper = "Click to Help";
-    var result = hyper.link("https://www.amazon.com/hz/wishlist/ls/3T7C1A6CTJW3S?ref_=wl_share&fbclid=IwAR0AsY53yqbHycEG4ZXPd1WtXmX88I5lIPY5dkTCVd0-i775ByCZxCqNPzU");
+  var hyper = "Click to Help";
+  var result = hyper.link("https://www.amazon.com/hz/wishlist/ls/3T7C1A6CTJW3S?ref_=wl_share&fbclid=IwAR0AsY53yqbHycEG4ZXPd1WtXmX88I5lIPY5dkTCVd0-i775ByCZxCqNPzU");
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
   });
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent(place.name + "<br> Address: " +place.adr_address+  "<Br> Amazon WishList: " + result);
+    infoWindow.setContent(place.name + "<br> Address: " +place.formatted_address+  "<Br> Amazon WishList: " + result);
     infoWindow.open(map, this);
   });
 }
