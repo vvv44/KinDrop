@@ -19,19 +19,19 @@ function performSearchwithLocation(){
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = {
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
-    };
-    map.setCenter(pos);
-    var request = {
-        location: map.getCenter(),
-        radius: '8000',
-        name: 'orphanage'
-    };
+      var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+      var request = {
+          location: map.getCenter(),
+          radius: '8000',
+          name: 'orphanage'
+      };
 
-    service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
     }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -40,7 +40,8 @@ function performSearchwithLocation(){
         handleLocationError(false, infoWindow, map.getCenter());
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    function handleLocationError(error,browserHasGeolocation, infoWindow, pos) {
+        console.log(error);
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
