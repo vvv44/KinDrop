@@ -67,7 +67,7 @@ function createMarker(place) {
     position: place.geometry.location
   });
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent(place.name + "<br> Address: " +place.formatted_address==undefined?"Place is undefined":"Place is other type"+  "<Br> Amazon WishList: " + result);
+    infoWindow.setContent(place.name + "<br> Address: " +place.formatted_address==undefined?"Place is undefined":typeof(place.formatted_address)+  "<Br> Amazon WishList: " + result);
     infoWindow.open(map, this);
   });
 }
