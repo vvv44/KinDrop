@@ -41,10 +41,9 @@ function performSearchwithLocation(){
     }
 
     function handleLocationError(error,browserHasGeolocation, infoWindow, pos) {
-        console.log(error);
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
+                              error :
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
