@@ -13,31 +13,25 @@ function initMap(){
         zoom: 15
     });
  //   geocoder = new google.maps.Geocoder;
-  
+}
+
+function performSearchwithLocation(){
+  /*Geolocation Service when domain is secure*/ 
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+    };
+    map.setCenter(pos);
     var request = {
         location: map.getCenter(),
         radius: '8000',
         name: 'orphanage'
     };
+
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
-    /*Geolocation Service when domain is secure*/ 
-     // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-        };
-        map.setCenter(pos);
-        var request = {
-            location: map.getCenter(),
-            radius: '15000',
-            name: 'orphanage'
-        };
-    
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
     }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -53,8 +47,8 @@ function initMap(){
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
- 
 }
+
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
