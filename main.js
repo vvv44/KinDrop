@@ -40,8 +40,7 @@ function performSearchwithLocation(){
         handleLocationError(false, infoWindow, map.getCenter());
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos,error) {
-      alert(error.message);
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ?
                             'Error: The Geolocation service failed.' :
