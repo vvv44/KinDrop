@@ -22,37 +22,37 @@ function initMap(){
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
     /*Geolocation Service when domain is secure*/ 
-    //  // Try HTML5 geolocation.
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //     var pos = {
-    //     lat: 33.0081127,//position.coords.latitude,
-    //     lng: -96.73477889947152//position.coords.longitude
-    //     };
-    //     map.setCenter(pos);
-    //     var request = {
-    //         location: map.getCenter(),
-    //         radius: '15000',
-    //         name: 'orphanage'
-    //     };
+     // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+        var request = {
+            location: map.getCenter(),
+            radius: '15000',
+            name: 'orphanage'
+        };
     
-    //     service = new google.maps.places.PlacesService(map);
-    //     service.nearbySearch(request, callback);
-    // }, function() {
-    //     handleLocationError(true, infoWindow, map.getCenter());
-    // });
-    // } else {
-    // // Browser doesn't support Geolocation
-    //     handleLocationError(false, infoWindow, map.getCenter());
-    // }
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+    }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+    });
+    } else {
+    // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
 
-    // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    //     infoWindow.setPosition(pos);
-    //     infoWindow.setContent(browserHasGeolocation ?
-    //                           'Error: The Geolocation service failed.' :
-    //                           'Error: Your browser doesn\'t support geolocation.');
-    //     infoWindow.open(map);
-    // }
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
  
 }
 function callback(results, status) {
