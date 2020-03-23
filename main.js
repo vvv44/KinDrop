@@ -58,6 +58,7 @@ function callback(results, status) {
     }
   }
   //We will perform ajax call in here for testing
+  console.log("Before ajax call")
   $.ajax({
     url:"php/searchLists.php",
     type:"GET",
