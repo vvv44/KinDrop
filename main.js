@@ -13,6 +13,20 @@ function initMap(){
         zoom: 15
     });
  //   geocoder = new google.maps.Geocoder;
+    //We will perform ajax call in here for testing
+    console.log("Before ajax call")
+    $.ajax({
+      url:"php/searchLists.php",
+      type:"GET",
+      dataType:"json",
+      success: function(data){
+        console.log(data);
+      },
+      error: function(e){
+        console.log(e);
+      }
+
+    });
 }
 
 function performSearchwithLocation(){
@@ -57,20 +71,6 @@ function callback(results, status) {
       placesNames.push(results[i].name);
     }
   }
-  //We will perform ajax call in here for testing
-  console.log("Before ajax call")
-  $.ajax({
-    url:"php/searchLists.php",
-    type:"GET",
-    dataType:"json",
-    success: function(data){
-      console.log(data);
-    },
-    error: function(e){
-      console.log(e);
-    }
-
-  });
 }
 
 function createMarker(place) {
