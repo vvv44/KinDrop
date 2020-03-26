@@ -25,7 +25,6 @@ function initMap(){
       error: function(e){
         console.log(e);
       }
-
     });
 }
 
@@ -101,3 +100,15 @@ function geoCodefromLat(place){
       });
 }
 
+$document.ready(function(){
+  $('.btn').click(function(event){
+    
+    event.preventDefault()
+    
+    var email = $('.email').val()
+    var message = $('.message').val()
+    var name = $('.name').val()
+    var phone = $('.phone').val()
+
+  })
+});
