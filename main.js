@@ -103,7 +103,7 @@ function geoCodefromLat(place){
 $document.ready(function(){
   $('.btn').click(function(event){
     
-    event.preventDefault()
+    //event.preventDefault()
     
     var email = $('.email').val()
     var message = $('.message').val()
