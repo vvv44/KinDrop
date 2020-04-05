@@ -29,7 +29,7 @@ function initMap(){
 }
 
 function performSearchwithLocation(){
-  console.log(placesFromDB);
+  console.log(placesFromDB[0]);
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
