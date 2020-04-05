@@ -3,7 +3,7 @@ var service;
 var infoWindow;
 var placesNames = [];
 var geocoder;
-
+var placesFromDB = [];
 
 function initMap(){
     var pos = new google.maps.LatLng(33.0081127,-96.73477889947152);
@@ -14,13 +14,12 @@ function initMap(){
     });
     //geocoder = new google.maps.Geocoder;
     //We will perform ajax call in here for testing
-    console.log("Before ajax call")
     $.ajax({
       url:"php/searchLists.php",
       type:"GET",
       dataType:"json",
       success: function(data){
-        console.log(data);
+        placesFromDB.push(data);
       },
       error: function(e){
         console.log(e);
@@ -30,6 +29,7 @@ function initMap(){
 }
 
 function performSearchwithLocation(){
+  console.log(placesFromDB);
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -41,7 +41,7 @@ function performSearchwithLocation(){
       var rad = document.getElementById('distRange').value; 
       var request = {
           location: map.getCenter(),
-          radius: rad,
+          radius: rad*1600,
           name: 'orphanage'
       };
 
@@ -68,8 +68,8 @@ function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
-      createMarker(results[i]);
-      placesNames.push(results[i].name);
+      createMarker(place);
+      placesNames.push(place.name);
     }
   }
 }
@@ -102,15 +102,14 @@ function geoCodefromLat(place){
       });
 }
 
-$document.ready(function(){
-  $('.btn').click(function(event){
-    
-    //event.preventDefault()
-    
-    var email = $('.email').val()
-    var message = $('.message').val()
-    var name = $('.name').val()
-    var phone = $('.phone').val()
 
-  })
-});
+$('.btn').click(function(event){
+  
+  //event.preventDefault()
+  
+  var email = $('.email').val()
+  var message = $('.message').val()
+  var name = $('.name').val()
+  var phone = $('.phone').val()
+
+})

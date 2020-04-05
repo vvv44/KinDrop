@@ -56,3 +56,6 @@ opacity: .7;
 #location-butt:hover{
     opacity: 1;
 }
+#location-butt:focus{
+    outline-color: black;
+}
