@@ -12,7 +12,7 @@ function initMap(){
         center: pos,
         zoom: 15
     });
- //   geocoder = new google.maps.Geocoder;
+    //geocoder = new google.maps.Geocoder;
     //We will perform ajax call in here for testing
     console.log("Before ajax call")
     $.ajax({
@@ -25,8 +25,8 @@ function initMap(){
       error: function(e){
         console.log(e);
       }
-
     });
+    //More code
 }
 
 function performSearchwithLocation(){
@@ -38,9 +38,10 @@ function performSearchwithLocation(){
       lng: position.coords.longitude
       };
       map.setCenter(pos);
+      var rad = document.getElementById('distRange').value; 
       var request = {
           location: map.getCenter(),
-          radius: '8000',
+          radius: rad,
           name: 'orphanage'
       };
 
@@ -100,4 +101,6 @@ function geoCodefromLat(place){
         }
       });
 }
+
+
 

@@ -139,7 +139,11 @@
                 <div class="beforeMap">
                     <h2 class="section-heading text-uppercase">Start Helping</h2>
                     <h3 class="section-subheading text-muted">Select a nearby center to donate to.</h3>
-                    <button type="button" class="btn btn-outline-warning" onclick="performSearchwithLocation()">Find Places to Help</button>
+                    <button type="button" id="location-butt" class="btn btn-outline-warning" onclick="performSearchwithLocation()">Find Places to Help</button>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="50" value="25" class="slider" id="distRange" oninput="distOut.value = distRange.value">
+                        <output name="distance" id="distOut">25</output><p>Miles</p>
+                    </div>
                 </div>
                 <style>
                     /* Always set the map height explicitly to define the size of the div

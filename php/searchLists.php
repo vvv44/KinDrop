@@ -3,9 +3,9 @@
 try {
     $conn = new PDO("sqlsrv:server = tcp:kindrop.database.windows.net,1433; Database = kindrop Wishlists", "kindropadmin", "vsilva13/09");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sth = $conn->prepare('SELECT * FROM wishlists');
-    $sth->execute();
-    $rows = $sth->fetchAll(PDO::FETCH_CLASS);
+    $query = $conn->prepare('SELECT * FROM wishlists');
+    $query->execute();
+    $rows = $query->fetchAll(PDO::FETCH_CLASS);
     $rowsToReturn;
     foreach ($rows as $row) {
         $rowsToReturn[] = $row;
