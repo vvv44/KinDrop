@@ -29,7 +29,6 @@ function initMap(){
 }
 
 function performSearchwithLocation(){
-  console.log(placesFromDB[0]['name']);
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -76,7 +75,10 @@ function callback(results, status) {
 
 function createMarker(place) {
   var hyper = "Click to Help";
-  var result = hyper.link("https://www.amazon.com/hz/wishlist/ls/3T7C1A6CTJW3S?ref_=wl_share&fbclid=IwAR0AsY53yqbHycEG4ZXPd1WtXmX88I5lIPY5dkTCVd0-i775ByCZxCqNPzU");
+  var result = ""
+  if(place.name==placesFromDB[0]['name']){
+    result = hyper.link(placesFromDB[0]['list']);
+  }
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
