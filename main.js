@@ -19,7 +19,7 @@ function initMap(){
       type:"GET",
       dataType:"json",
       success: function(data){
-        placesFromDB.push(data); //FIXME: must traverse data and push one by one
+        placesFromDB.push(data[0]); //FIXME: must traverse data and push one by one
       },
       error: function(e){
         console.log(e);
@@ -29,6 +29,7 @@ function initMap(){
 }
 
 function performSearchwithLocation(){
+  console.log(placesFromDB[0]['name']);
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
