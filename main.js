@@ -19,18 +19,20 @@ function initMap(){
       type:"GET",
       dataType:"json",
       success: function(data){
-        console.log(data[0]['name']);
-        console.log(data);
-        console.log(data[0]);
-        for(var i=0;i<data.length;i++){
-          placesFromDB.put(data[i]['name'],data[i]);
-        }
+        putListsInDict(data);
       },
       error: function(e){
         console.log(e);
       }
     });
     //More code
+}
+
+function putListsInDict(data){
+  for(var i=0;i<data.length;i++){
+    placesFromDB.put(data[i]['name'],data[i]);
+  }
+  
 }
 
 function performSearchwithLocation(){
