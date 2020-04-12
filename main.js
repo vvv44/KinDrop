@@ -3,7 +3,7 @@ var service;
 var infoWindow;
 var placesNames = [];
 var geocoder;
-var placesFromDB = [];
+var placesFromDB = {};
 
 function initMap(){
     var pos = new google.maps.LatLng(33.0081127,-96.73477889947152);
@@ -19,7 +19,9 @@ function initMap(){
       type:"GET",
       dataType:"json",
       success: function(data){
-        placesFromDB.push(data[0]); //FIXME: must traverse data and push one by one
+        for(var i=0;i<data.length;i++){
+          placesFromDB.put(data[i]['name'],data[i]);
+        }
       },
       error: function(e){
         console.log(e);
@@ -76,8 +78,8 @@ function callback(results, status) {
 function createMarker(place) {
   var hyper = "Click to Help";
   var result = ""
-  if(place.name==placesFromDB[0]['name']){
-    result = hyper.link(placesFromDB[0]['list']);
+  if(place.name in placesFromDB){
+    result = hyper.link(placesFromDB[places.name]['list']);
   }
   var marker = new google.maps.Marker({
     map: map,
