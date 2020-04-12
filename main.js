@@ -32,6 +32,8 @@ function putListsInDict(data){
   console.log(data);
   for(var i=0;i<data.length;i++){
     placesFromDB.put(data[i]['name'],data[i]);
+    console.log(placesFromDB[data[i]['name']]);
+    console.log('Inside Loop');
   }
   
 }
