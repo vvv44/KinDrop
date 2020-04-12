@@ -31,6 +31,7 @@ function initMap(){
 }
 
 function performSearchwithLocation(){
+  console.log(placesFromDB)
   /*Geolocation Service when domain is secure*/ 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
