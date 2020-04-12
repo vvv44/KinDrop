@@ -87,7 +87,7 @@ function createMarker(place) {
   var hyper = "Click to Help";
   var result = ""
   if(place.name in placesFromDB){
-    result = hyper.link(placesFromDB[places.name]['list']);
+    result = hyper.link(placesFromDB[place.name]['list']);
   }
   var marker = new google.maps.Marker({
     map: map,
